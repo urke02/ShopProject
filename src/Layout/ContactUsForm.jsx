@@ -58,14 +58,26 @@ export default function ContactUsForm({isEdit}) {
     console.log("Form Data Submitted: ", form);
   }
 
+  const onReset = () => {
+    setForm({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      message: ""
+    })
+  }
+
   /*
+
+  *PRIMER KAKO DA NE RADIM JER JE KOMPLIKOVANIJE I MANJE EFIKASNO*
+
   const [firstName, setFirstName] = useState("");
   console.log("First Name:", firstName);
   const [lastName, setLastName] = useState("");
   console.log("Last Name:", lastName);
 
 
-  
   
   const onChange = (e) => {
     const {name, value} = e.target;
@@ -91,6 +103,7 @@ export default function ContactUsForm({isEdit}) {
               id="firstName"
               name="firstName"
               className="border-b border-black-300 m-1 w-full"
+              required
             />
           </div>
 
@@ -105,6 +118,7 @@ export default function ContactUsForm({isEdit}) {
               id="lastName"
               name="lastName"
               className="border-b border-black-300 m-1 w-full"
+              required
             />
           </div>
 
@@ -119,6 +133,7 @@ export default function ContactUsForm({isEdit}) {
               id="email"
               name="email"
               className="border-b border-black-300 m-1 w-full"
+              required
             />
           </div>
 
@@ -149,6 +164,7 @@ export default function ContactUsForm({isEdit}) {
               rows="4"
               cols="50"
               className="border border-black-300 m-1 w-full"
+              required
             ></textarea>
           </div>
 
@@ -157,6 +173,14 @@ export default function ContactUsForm({isEdit}) {
             className="bg-purple-700 text-white font-bold py-2 px-4 rounded m-1 hover:bg-purple-900"
           >
             Submit
+          </button>
+
+          <button
+          type="reset"
+          onClick={onReset}
+          className="bg-purple-700 text-white font-bold py-2 px-4 rounded m-1 hover:bg-purple-900"
+          >
+            Reset
           </button>
         </form>
       </div>
