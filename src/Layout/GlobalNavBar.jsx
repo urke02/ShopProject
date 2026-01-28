@@ -7,6 +7,7 @@ export default function GlobalNavBar() {
     {to: "/contact-us", label: "Contact"},
   ]
   
+  
   return (
     <nav className="bg-purple-800 text-white p-1 flex justify-center">
       <ul className="flex gap-4 p-4">
@@ -24,3 +25,4 @@ export default function GlobalNavBar() {
     </nav>
   )
 }
+

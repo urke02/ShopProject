@@ -6,7 +6,6 @@ export default function Shop() {
   return (
     <>
       <GlobalNavBar />
-      <div>Shop</div>
       <GlobalFooter />
     </>
   )
