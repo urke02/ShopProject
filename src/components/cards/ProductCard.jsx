@@ -1,9 +1,5 @@
-
-
 function ProductCard() {
-  return (
-    <div>ProductCard</div>
-  )
+  return <div>ProductCard</div>;
 }
 
-export {ProductCard, }
+export { ProductCard };
