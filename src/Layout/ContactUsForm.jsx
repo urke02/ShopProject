@@ -1,6 +1,6 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-export default function ContactUsForm() {
+export default function ContactUsForm({isEdit}) {
   /**
    * 1. Za label for i id najbolje koristiti malo pocetno slovo
    * 2. Forma treba da bude kontrolisana sa useState hook-om
@@ -22,66 +22,130 @@ export default function ContactUsForm() {
    * }
    */
 
+  const updData = {
+    firstName: "Uros",
+    lastName: "Tomic",
+    email: "tomicuros006@gmail.com",
+    phone: "38100000000",
+    message: "message"
+  }
+
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
+  useEffect(()=>{
+    if (isEdit){
+      setForm(updData)
+    }
+  },[isEdit])
+
+  const onChange = (e) =>{
+    const {name, value} = e.target;
+    setForm({
+      ...form,
+      [name]: value
+    });
+  }
+
+
+  const onSubmit = (e) =>{
+    e.preventDefault();
+    console.log("Form Data Submitted: ", form);
+  }
+
+  /*
+  const [firstName, setFirstName] = useState("");
+  console.log("First Name:", firstName);
+  const [lastName, setLastName] = useState("");
+  console.log("Last Name:", lastName);
+
+
+  
+  
+  const onChange = (e) => {
+    const {name, value} = e.target;
+    if(name === "firstName"){
+      setFirstName(value);
+    }else if(name === "lastName"){
+      setLastName(value);
+    }
+  }*/
+
   return (
     <>
       <div className="flex justify-center mt-15">
-        <form className="bg-gray-100 border-2 rounded-2xl p-4 border-r-15 border-b-15 border-gray-700">
+        <form className="bg-gray-100 border-2 rounded-2xl p-4 border-r-15 border-b-15 border-gray-700" onSubmit={onSubmit}>
           <div>
-            <label for="FirstName" className="block text- m-1">
+            <label htmlFor="firstName" className="block text- m-1">
               First Name:
             </label>
             <input
+              onChange={onChange}
+              value={form.firstName}
               type="text"
-              id="FirstName"
-              name="FirstName"
+              id="firstName"
+              name="firstName"
               className="border-b border-black-300 m-1 w-full"
             />
           </div>
 
           <div>
-            <label for="LastName" className="block text-left m-1">
+            <label htmlFor="lastName" className="block text-left m-1">
               Last Name:
             </label>
             <input
+              onChange={onChange}
+              value={form.lastName}
               type="text"
-              id="LastName"
-              name="LastName"
+              id="lastName"
+              name="lastName"
               className="border-b border-black-300 m-1 w-full"
             />
           </div>
 
           <div>
-            <label for="Email" className="block text-left m-1">
+            <label htmlFor="email" className="block text-left m-1">
               E-mail:
             </label>
             <input
+              onChange={onChange}
+              value={form.email}
               type="email"
-              id="Email"
-              name="Email"
+              id="email"
+              name="email"
               className="border-b border-black-300 m-1 w-full"
             />
           </div>
 
           <div>
-            <label for="Phone" className="block text-left m-1">
+            <label htmlFor="phone" className="block text-left m-1">
               Phone:
             </label>
             <input
-              type="tel"
-              id="Phone"
-              name="Phone"
+              onChange={onChange}
+              value={form.phone}
+              type="number"
+              id="phone"
+              name="phone"
               className="border-b border-black-300 m-1 w-full"
             />
           </div>
 
           <div>
-            <label for="Message" className="block text-left m-1">
+            <label htmlFor="message" className="block text-left m-1">
               Message:
             </label>
             <br />
             <textarea
-              id="Message"
-              name="Message"
+              onChange={onChange}
+              value={form.message}
+              id="message"
+              name="message"
               rows="4"
               cols="50"
               className="border border-black-300 m-1 w-full"

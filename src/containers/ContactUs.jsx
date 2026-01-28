@@ -1,4 +1,3 @@
-import React from 'react'
 import ContactUsHeader from '../Layout/ContactUsHeader.jsx'
 import ContactUsForm from '../Layout/ContactUsForm.jsx'
 
@@ -6,7 +5,7 @@ export default function ContactUs() {
   return (
     <>
         <ContactUsHeader />
-        <ContactUsForm />
+        <ContactUsForm isEdit={false}/>
     </>
   )
 }
